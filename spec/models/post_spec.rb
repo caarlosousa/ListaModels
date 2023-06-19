@@ -9,5 +9,8 @@ RSpec.describe Post, type: :model do
     it "should be invalid if name nil" do
       expect(build(:post, title:nil)).to be_invalid
     end
+    it "should be invalid if repeated" do
+      create(:post, title: "N1")
+      expect(build(:post, title: "N1")).to be_invalid
   end
 end
