@@ -12,8 +12,11 @@ RSpec.describe Commentary, type: :model do
     it "should be invalid if doesn't exist" do
       expect(build(:commentary, post_id: -1)).to be_invalid
     end
-    it "should be invalid if title nil" do
-      expect(build(:commentary, title:nil)).to be_invalid
+  end
+  
+  context "Validating content" do
+    it "should be invalid if content nil" do
+      expect(build(:commentary, content:nil)).to be_invalid
     end
   end
 end
