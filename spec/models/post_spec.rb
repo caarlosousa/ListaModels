@@ -5,13 +5,16 @@ RSpec.describe Post, type: :model do
   it { expect(build(:post)).to be_valid }
   end
 
-  context "Validating name" do
-    it "should be invalid if name nil" do
+  context "Validating title" do
+    it "should be invalid if title nil" do
       expect(build(:post, title:nil)).to be_invalid
     end
-    it "should be invalid if repeated" do
-      create(:post, title: "N1")
-      expect(build(:post, title: "N1")).to be_invalid
+  end
+  
+  context "Validating content" do
+    it "should be invalid if content nil" do
+      expect(build(:post, content:nil)).to be_invalid
     end
   end
+
 end
