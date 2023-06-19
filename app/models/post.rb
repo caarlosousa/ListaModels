@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
     has_many :posts, dependent: :destroy
 
-    validates :title, presence: :true
+    validates :title, presence: :true, uniqueness: :true
 end
