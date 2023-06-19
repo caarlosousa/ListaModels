@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe PostCategory, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "Testing factory" do
+    it "should create postcategory" do
+      create(:post, id:1)
+      expect(build(:postcategory, post_id:1)).to be_valid
+      create(:category, id:1)
+      expect(build(:postcategory, category_id:1)).to be_valid
+    end
+  end
 end
