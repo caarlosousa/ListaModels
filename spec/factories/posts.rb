@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :post do
     title { "MyString" }
     content { "MyText" }
-    su { "MyString" }
+    useradmin_id { "MyInteger" }
   end
 end
