@@ -14,4 +14,6 @@ RSpec.describe Category, type: :model do
       expect(build(:category, name: "test")).to be_invalid
     end
   end
+  # É preciso validar a descrição também, já que ela também
+  # é única e não pode ser nula
 end

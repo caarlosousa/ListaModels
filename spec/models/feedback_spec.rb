@@ -8,7 +8,7 @@ RSpec.describe Feedback, type: :model do
     end
   end
 
-  context "Validating feedback" do
+  context "Validating feedback" do # Mudar o nome aqui também
     it "should be invalid if doesn't exist" do
       expect(build(:feedback, post_id: -1)).to be_invalid
     end
