@@ -18,5 +18,12 @@ RSpec.describe "Api::V1::Posts", type: :request do
         expect(response).to have_http_status(:bad_request)
       end
     end
+    context "when params are repeated" do
+      post "/api/v1/posts/create", params:{post: post_params}
+      it "return http status bad_request" do
+        post "/api/v1/posts/create", params:{post: post_params}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
   end
 end
