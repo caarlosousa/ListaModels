@@ -8,7 +8,7 @@ RSpec.describe Commentary, type: :model do
     end
   end
 
-  context "Validating commentary" do
+  context "Validating commentary" do #Um nome melhor seria "Validating post", porque estamos testando a exitência do post
     it "should be invalid if doesn't exist" do
       expect(build(:commentary, post_id: -1)).to be_invalid
     end
