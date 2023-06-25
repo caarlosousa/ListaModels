@@ -64,4 +64,14 @@ RSpec.describe "Api::V1::Posts", type: :request do
       end
     end
   end
+
+  describe "DELETE /delete/:id" do
+    let(:post1) {create(:post, title: "Junior Santos", content: "Faca no porco")}
+    context "when post exists" do
+      it "return https status ok" do
+        delete "/api/v1/posts/delete/#{post1.id}"
+        expect(response).to have_http_status(:ok)
+      end
+    end
+  end
 end
