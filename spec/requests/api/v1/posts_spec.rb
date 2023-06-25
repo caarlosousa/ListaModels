@@ -28,4 +28,19 @@ RSpec.describe "Api::V1::Posts", type: :request do
     end
 =end
   end
+  
+  describe "GET /show" do
+    let(:post) { create(:post, title: "test", content: "testing") }
+
+    context "when the post exists" do
+      it "returns the post details" do
+        get "/api/v1/posts/show/#{post.id}"
+        expect(response).to have_http_status(:ok)
+
+        post_response = JSON.parse(response.body)
+        expect(post_response["title"]).to eq("test")
+        expect(post_response["content"]).to eq("testing")
+      end
+    end
+  end
 end
