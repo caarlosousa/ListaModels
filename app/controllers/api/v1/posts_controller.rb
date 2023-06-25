@@ -7,6 +7,13 @@ class Api::V1::PostsController < ApplicationController
         render json: e, status: :bad_request
     end
 
+    def show
+        post = Post.find(params[:id])
+        render json: post, status: :ok
+      rescue ActiveRecord::RecordNotFound => e
+        render json: e, status: :not_found
+    end
+
     private
 
     def post_params

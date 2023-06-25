@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace 'v1' do
       scope 'posts' do
         post 'create', to:'posts#create'
+        get 'show/:id', to: 'posts#show'
       end
     end
   end
