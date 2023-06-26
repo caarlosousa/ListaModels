@@ -49,13 +49,23 @@ RSpec.describe "Api::V1::Categories", type: :request do
   end
 
   describe "PATCH /update/:id" do
-    let(:category1) {create(:category, name: "Fogo", description: "Acompanhe tudo sobre o fogao")}
+    let(:category1) {create(:category, name: "Fogo", description: "Veja tudo sobre o fogao")}
     let(:category_params) do
       attributes_for(:category)
     end
     context "when params are ok" do
       it "return https status ok" do
         patch "/api/v1/categories/update/#{category1.id}", params:{category: category_params}
+        expect(response).to have_http_status(:ok)
+      end
+    end
+  end
+
+  describe "DELETE /delete/:id" do
+    let(:category1) {create(:category, name: "Fogo", description: "Veja tudo sobre o fogao")}
+    context "when post exists" do
+      it "return https status ok" do
+        delete "/api/v1/categories/delete/#{category1.id}"
         expect(response).to have_http_status(:ok)
       end
     end
