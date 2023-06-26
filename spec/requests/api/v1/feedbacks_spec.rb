@@ -34,9 +34,9 @@ RSpec.describe "Api::V1::Feedbacks", type: :request do
       end
     end
   end
-  
+
   describe "GET /show" do
-    let(:post1) {create(:post, title: "test", content: "testing")}
+    let(:post1) { create(:post, title: "test", content: "testing") }
     let(:feedback) { create(:feedback, like: true, post_id: post1.id)}
 
     context "when the feedback exists" do
