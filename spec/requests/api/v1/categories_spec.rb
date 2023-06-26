@@ -26,4 +26,25 @@ RSpec.describe "Api::V1::Categories", type: :request do
       end
     end
   end
+
+  describe "GET /show" do
+    let(:category) { create(:category, name: "test", description: "testing") }
+    context "when the category exists" do
+      it "returns the category details" do
+        get "/api/v1/categories/show/#{category.id}"
+        expect(response).to have_http_status(:ok)
+
+        category_response = JSON.parse(response.body)
+        expect(category_response["name"]).to eq("test")
+        expect(category_response["description"]).to eq("testing")
+      end
+    end
+
+    context "when the category does not exist" do
+      it "returns a not found error" do
+        get "/api/v1/categories/show/999"
+        expect(response).to have_http_status(:not_found)
+      end
+    end
+  end
 end
