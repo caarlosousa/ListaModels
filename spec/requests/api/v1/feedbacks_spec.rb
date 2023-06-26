@@ -14,7 +14,7 @@ RSpec.describe "Api::V1::Feedbacks", type: :request do
     end
     context "when params are nil" do
       feedback_params = nil
-      it "return https status bad_request" do
+      it "return https status bad request" do
         post "/api/v1/posts/#{post1.id}/feedbacks/create", params:{feedback: feedback_params}
         expect(response).to have_http_status(:bad_request)
       end

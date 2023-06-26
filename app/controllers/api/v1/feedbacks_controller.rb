@@ -12,4 +12,10 @@ class Api::V1::FeedbacksController < ApplicationController
     rescue StandardError => e
         render json: e, status: :bad_request
     end
+
+    private
+
+    def feedback_params
+        params.require(:feedback).permit(:like)
+    end
 end
