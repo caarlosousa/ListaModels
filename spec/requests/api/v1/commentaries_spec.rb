@@ -20,4 +20,26 @@ RSpec.describe "Api::V1::Commentaries", type: :request do
       end
     end
   end
+  
+  describe "GET /show" do
+    let(:post1) {create(:post, title: "test", content: "testing")}
+    let(:commentary) { create(:commentary, content: "test", post_id: post1.id)}
+
+    context "when the commentary exists" do
+      it "returns the commentary details" do
+        get "/api/v1/posts/#{post1.id}/commentaries/show/#{commentary.id}"
+        expect(response).to have_http_status(:ok)
+
+        commentary_response = JSON.parse(response.body)
+        expect(commentary_response["content"]).to eq("test")
+      end
+    end
+
+    context "when the commentary does not exist" do
+      it "returns a not found error" do
+        get "/api/v1/posts/#{post1.id}/commentaries/show/999"
+        expect(response).to have_http_status(:not_found)
+      end
+    end
+  end
 end

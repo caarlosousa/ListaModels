@@ -16,9 +16,9 @@ class Api::V1::FeedbacksController < ApplicationController
     def show
         feedback = Feedback.find(params[:id])
         render json: feedback, status: :ok
-      rescue StandardError => e
+    rescue StandardError => e
         render json: e, status: :not_found
-      end
+    end
 
     def update
         feedback = Feedback.find(params[:id])
