@@ -28,6 +28,14 @@ class Api::V1::FeedbacksController < ApplicationController
         render json> e, status: :not_found
     end
 
+    def delete
+        feedback = Feedback.find(params[:id])
+        feedback.destroy!
+        render json: {message: "Destroyed object."}, status: :ok
+    rescue StandardError => e
+        render json: e, status: :not_found
+    end
+
     private
 
     def feedback_params
