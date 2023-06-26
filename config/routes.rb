@@ -18,6 +18,13 @@ Rails.application.routes.draw do
         patch ':id/commentaries/update/:id', to: 'commentaries#update'
         delete ':id/commentaries/delete/:id', to: 'commentaries#delete'
       end
+      scope 'categories' do
+        get 'index', to: 'categories#index'
+        get 'show/:id', to: 'categories#show'
+        post 'create', to:'categories#create'
+        patch 'update/:id', to:'categories#update'
+        delete 'delete/:id', to:'categories#delete'
+      end
     end
   end
 end
