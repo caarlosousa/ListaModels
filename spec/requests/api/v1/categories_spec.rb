@@ -42,7 +42,7 @@ RSpec.describe "Api::V1::Categories", type: :request do
 
     context "when the category does not exist" do
       it "returns a not found error" do
-        get "/api/v1/categories/show/999"
+        get "/api/v1/categories/show/-1" #Aqui é melhor colocar -1, porque temos CERTEZA que não vai existir
         expect(response).to have_http_status(:not_found)
       end
     end
